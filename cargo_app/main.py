@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+from cargo_app.api.v1.routes.cargos import router
 
 app = FastAPI(
     title='Cargos API',
@@ -8,3 +9,4 @@ app = FastAPI(
     docs_url='/docs',
     redoc_url='/redoc',
 )
+app.include_router(router)

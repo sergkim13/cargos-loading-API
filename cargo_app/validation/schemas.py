@@ -1,11 +1,11 @@
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, Field, validator
 
 
 class Cargo(BaseModel):
-    length: int
-    width: int
-    height: int
-    weight: int
+    length: int = Field(gt=0)
+    width: int = Field(gt=0)
+    height: int = Field(gt=0)
+    weight: int = Field(gt=0)
 
 
 class CoordinatePoint(BaseModel):
