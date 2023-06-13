@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  cargo_app:
+    container_name: cargo_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: >
+      sh -c "
+        echo 'Starting project...' &&
+        uvicorn cargo_app.main:app --host 0.0.0.0 --reload
+      "
+    expose:
+      - 8000
+    ports:
+      - "8000:8000"
