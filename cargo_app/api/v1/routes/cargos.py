@@ -20,5 +20,11 @@ async def load_cargos(
     cargos: list[Cargo],
     cargo_service: CargoService = Depends(get_cargo_service),
 ) -> PayloadResponse:
-    """Loads given cargos into car and returns loaded and denied cargos."""
+    """
+    Loads given cargos into car and returns loaded and denied cargos.
+
+    :param cargos: list of cargos with given length, width, height in centimeters
+    and weight in kilograms
+    :param cargo_service: service class which provides operations with cargos.
+    """
     return cargo_service.load_cargos(cargos=cargos)
