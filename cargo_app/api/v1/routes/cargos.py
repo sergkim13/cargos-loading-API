@@ -13,17 +13,12 @@ router = APIRouter(
 @router.post(
     path='/load',
     status_code=status.HTTP_200_OK,
-    # response_model=PayloadResponse,
+    response_model=PayloadResponse,
     summary='Погрузка грузов в кузов автомобиля',
 )
 async def load_cargos(
     cargos: list[Cargo],
     cargo_service: CargoService = Depends(get_cargo_service),
-):
+) -> PayloadResponse:
     """Loads given cargos into car and returns loaded and denied cargos."""
-    return await cargo_service.load_cargos(cargos=cargos)
-
-
-@router.get('')
-async def index():
-    return 'Hello'
+    return cargo_service.load_cargos(cargos=cargos)

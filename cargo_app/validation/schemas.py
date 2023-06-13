@@ -11,17 +11,15 @@ class Cargo(BaseModel):
 class CoordinatePoint(BaseModel):
     x: int
     y: int
-    z: int
 
 
-class LoadedCargo(BaseModel):
-    cargo: Cargo
+class LoadedCargo(Cargo):
     coordinates: list[CoordinatePoint]
 
     @validator('coordinates')
     def validate_coordinates(cls, v):
-        if len(v) != 8:
-            raise ValueError('Number of coordinates should be 8')
+        if len(v) != 4:
+            raise ValueError('Number of coordinates should be 4')
         return v
 
 
